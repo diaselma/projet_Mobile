@@ -1,0 +1,121 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.ui-page {
+    padding: 0;
+}
+
+.ui-header {
+    background-color: #004d40;
+    color: #ffffff;
+    text-align: center;
+}
+
+.ui-footer {
+    background-color: #004d40;
+    color: #ffffff;
+    text-align: center;
+}
+
+.ui-content {
+    padding: 10px;
+}
+
+.ui-btn {
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+
+.ui-btn:hover {
+    background-color: #004d40;
+}
+
+.ui-btn.ui-btn-b {
+    background-color: #00796b;
+}
+
+.ui-btn.ui-btn-b:hover {
+    background-color: #004d40;
+}
+
+#contactList {
+    margin-top: 20px;
+}
+
+#contactList li {
+    border-bottom: 1px solid #eeeeee;
+}
+
+#contactList li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+#contactList li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#contactList li h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+#contactList li p {
+    margin: 0;
+    font-size: 14px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #00796b;
+    color: #ffffff;
+}
+
+form button:hover {
+    background-color: #004d40;
+}
+
+#contactDetailsPage h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#contactDetailsPage p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#contactDetailsPage .ui-btn {
+    width: auto;
+    margin-top: 20px;
+}

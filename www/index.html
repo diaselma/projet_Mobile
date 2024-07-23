@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Contacts</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <style>
+        /* CSS intégré directement dans le fichier HTML */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .ui-page {
+            padding: 0;
+        }
+
+        .ui-header, .ui-footer {
+            background-color: #00796b !important;
+            color: #ffffff !important;
+            text-align: center;
+        }
+
+        .ui-content {
+            padding: 15px;
+        }
+
+        .ui-btn {
+            background-color: #004d40 !important;
+            color: #ffffff !important;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .ui-btn:hover {
+            background-color: #00332a !important;
+        }
+
+        #contactList {
+            margin-top: 20px;
+            padding: 0;
+        }
+
+        #contactList li {
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        #contactList li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #000000;
+            padding: 10px;
+        }
+
+        #contactList li img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #contactList li h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        #contactList li p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #004d40 !important;
+            color: #ffffff !important;
+            font-size: 16px;
+        }
+
+        form button:hover {
+            background-color: #00332a !important;
+        }
+
+        #contactDetailsPage h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #contactDetailsPage p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        #contactDetailsPage .ui-btn {
+            width: auto;
+            margin-top: 20px;
+        }
+
+        .ui-btn i {
+            margin-right: 5px; /* Espace entre l'icône et le texte */
+        }
+    </style>
+</head>
+<body>
+
+<div data-role="page" id="home">
+    <div data-role="header">
+        <h1>Gestion de Contacts</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <!-- Button to open form page for adding a new contact -->
+        <a href="#addContactPage" class="ui-btn ui-corner-all ui-shadow ui-btn-b">
+            <i class="fas fa-plus"></i> Ajouter un contact
+        </a>
+        
+        <!-- Button to add contact from device -->
+        <button id="addFromDevice" class="ui-btn ui-corner-all ui-shadow ui-btn-b">
+            <i class="fas fa-mobile-alt"></i> Ajouter depuis le téléphone
+        </button>
+
+        <!-- List to display contacts -->
+        <ul id="contactList" data-role="listview" data-inset="true"></ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h1>M1IABD &copy; 2024</h1>
+    </div>
+</div>
+
+<div data-role="page" id="addContactPage">
+    <div data-role="header">
+        <h1>Ajouter un Contact</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <!-- Form for adding new contact -->
+        <form id="addContactForm">
+            <label for="name">Nom:</label>
+            <input type="text" name="name" id="name" required>
+            
+            <label for="phone">Numéro de téléphone:</label>
+            <input type="tel" name="phone" id="phone" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            
+            <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b">
+                <i class="fas fa-save"></i> Enregistrer
+            </button>
+        </form>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h1>M1IABD &copy; 2024</h1>
+    </div>
+</div>
+
+<div data-role="page" id="contactDetailsPage">
+    <div data-role="header">
+        <h1>Détails du Contact</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h2 id="contactName"></h2>
+        <p><strong>Téléphone :</strong> <span id="contactPhone"></span></p>
+        <p><strong>Email :</strong> <span id="contactEmail"></span></p>
+        <a href="#home" class="ui-btn ui-corner-all ui-shadow ui-btn-b">
+            <i class="fas fa-arrow-left"></i> Retour à la liste
+        </a>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h1>M1IABD &copy; 2024</h1>
+    </div>
+</div>
+
+</body>
+</html>
